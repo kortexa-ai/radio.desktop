@@ -1,0 +1,31 @@
+{
+    "name": "radio-desktop",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "AI Music Generation Desktop App powered by ACE-Step",
+    "scripts": {
+        "start": "vite build && electrobun dev",
+        "dev": "electrobun dev --watch",
+        "dev:hmr": "concurrently \"bun run hmr\" \"bun run start\"",
+        "hmr": "vite --port 5173",
+        "build:canary": "vite build && electrobun build --env=canary",
+        "build:stable": "vite build && electrobun build --env=stable"
+    },
+    "dependencies": {
+        "electrobun": "1.14.4",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "@types/react": "^18.3.0",
+        "@types/react-dom": "^18.3.0",
+        "@vitejs/plugin-react": "^4.3.0",
+        "autoprefixer": "^10.4.20",
+        "concurrently": "^9.0.0",
+        "postcss": "^8.4.47",
+        "tailwindcss": "^3.4.16",
+        "typescript": "^5.7.0",
+        "vite": "^6.0.0"
+    }
+}

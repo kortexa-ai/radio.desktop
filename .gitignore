@@ -1,0 +1,8 @@
+node_modules/
+dist/
+build/
+artifacts/
+*.lock
+.DS_Store
+.env
+ux-mockup.png
