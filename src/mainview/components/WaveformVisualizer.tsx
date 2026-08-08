@@ -23,7 +23,7 @@ export default function WaveformVisualizer({
     const [isPlaying, setIsPlaying] = useState(false);
     const [progress, setProgress] = useState(0);
     const [duration, setDuration] = useState(0);
-    const lastAutoPlayedRef = useRef<string | undefined>();
+    const lastAutoPlayedRef = useRef<string | undefined>(undefined);
 
     // Listen for playback commands from menu/tray
     useEffect(() => {
@@ -48,7 +48,7 @@ export default function WaveformVisualizer({
 
     // Report playback state to bun for tray updates
     useEffect(() => {
-        electroview.rpc.request.reportPlaybackState({
+        electroview.rpc!.request.reportPlaybackState({
             state: isPlaying ? "playing" : "stopped",
         }).catch(() => { /* best effort */ });
     }, [isPlaying]);

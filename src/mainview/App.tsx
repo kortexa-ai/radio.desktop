@@ -82,7 +82,7 @@ export default function App() {
     // Check server health on mount
     useEffect(() => {
         const checkHealth = async () => {
-            const result = await electroview.rpc.request.checkHealth({});
+            const result = await electroview.rpc!.request.checkHealth({});
             setServerOnline(result.online);
         };
         checkHealth();
@@ -92,7 +92,7 @@ export default function App() {
 
     // Load history from disk on mount
     useEffect(() => {
-        electroview.rpc.request.getHistory({}).then((r) => {
+        electroview.rpc!.request.getHistory({}).then((r) => {
             setHistory(r.entries);
         });
     }, []);
@@ -128,7 +128,7 @@ export default function App() {
                 if (d.aiTitle) setAiTitle(d.aiTitle);
                 if (d.coverArt) setCoverArt(d.coverArt);
                 // Refresh history (auto-saved to disk)
-                electroview.rpc.request.getHistory({}).then((r) => {
+                electroview.rpc!.request.getHistory({}).then((r) => {
                     setHistory(r.entries);
                     if (r.entries.length > 0) setSelectedHistoryId(r.entries[0].id);
                 });
@@ -193,7 +193,7 @@ export default function App() {
 
         // Fire and forget — all state updates come via generationStatus messages.
         // The RPC response is just an ack; we don't depend on it arriving.
-        electroview.rpc.request.generateMusic({
+        electroview.rpc!.request.generateMusic({
             caption: fullCaption,
             lyrics: instrumental ? "[Instrumental]" : lyrics,
             instrumental,
